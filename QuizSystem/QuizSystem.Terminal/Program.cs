@@ -18,7 +18,14 @@ namespace QuizSystem.Terminal
 
             // 2) User fills in the quiz
             QuizReply userReply = new QuizReply(user, quiz);
-            userReply.Solve();
+            ConsoleGuiEngine guiEngine = new ConsoleGuiEngine(
+                new QuestionRenderer[]
+                {
+                    new SingleSelectionQuestionRenderer(),
+                    new MultipleSelectionQuestionRenderer()
+                });
+
+            userReply.Solve(guiEngine);
 
             // 3) Display score
             Console.WriteLine();
@@ -40,14 +47,14 @@ namespace QuizSystem.Terminal
                         },
                         1),
 
-                    new SingleSelectionQuestion(
+                    new MultipleSelectionQuestion(
                         id++,
                         "What is the best smartphone brand:",
                         new []
                         {
                             "Apple", "Samsung", "LG"
                         },
-                        0),
+                        new[] { 0, 1 }),
 
                     new SingleSelectionQuestion(
                         id++,
@@ -58,14 +65,14 @@ namespace QuizSystem.Terminal
                         },
                         2),
 
-                    new SingleSelectionQuestion(
+                    new MultipleSelectionQuestion(
                         id++,
                         "Who builds the best electric cars",
                         new []
                         {
                             "Tesla", "Renault", "Dacia"
                         },
-                        2)
+                        new[] { 0, 2 })
                 });
         }
     }

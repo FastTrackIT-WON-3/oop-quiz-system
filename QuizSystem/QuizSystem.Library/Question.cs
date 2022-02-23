@@ -13,7 +13,5 @@
         public string Text { get; }
 
         public abstract decimal GetScoreForAnswer(string answer);
-
-        public abstract void Render(int questionNo);
     }
 }

@@ -35,16 +35,5 @@ namespace QuizSystem.Library
                 ? 1M
                 : 0M;
         }
-
-        public override void Render(int questionNo)
-        {
-            Console.WriteLine($"{questionNo}) {Text}");
-            for (int i = 0; i < Options.Length; i++)
-            {
-                Console.WriteLine($"    {i}: {Options[i]}");
-            }
-
-            Console.Write("Please choose a single option index=");
-        }
     }
 }
